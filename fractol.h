@@ -1,0 +1,93 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/29 23:21:39 by mkimdil           #+#    #+#             */
+/*   Updated: 2024/01/29 23:22:16 by mkimdil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FRACTOL_H
+# define FRACTOL_H
+
+# include <stdio.h>
+# include <stdlib.h>
+# include <math.h>
+# include "mlx.h"
+
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	double	center_real;
+	double	center_imaginary;
+	double	scale;
+	int		max_iter;
+	int		color;
+	int		gen_color;
+	int		mouse_x;
+	int		mouse_y;
+}	t_vars;
+
+typedef struct s_complex
+{
+	double	real;
+	double	imaginary;
+}	t_complex;
+
+typedef struct s_fractal
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	double	scale;
+	int		max_iter;
+	int		color;
+	int		gen_color;
+	int		mouse_x;
+	int		mouse_y;
+	double	c_real;
+	double	c_imaginary;
+	double	z_real;
+	double	z_imaginary;
+	int		width;
+	int		height;
+	double	move;
+	double	move1;
+	double	move_step;
+	double	move_step1;
+	int		binary;
+}	t_fractal;
+
+int		key_hook_julia(int keycode, t_fractal *julia);
+int		key_mouse_julia(int button, int x, int y, t_fractal *julia);
+int		mouse_sen_julia(int x, int y, t_fractal *julia);
+int		render_next_frame_julia(void *param);
+int		generate_color_julia(int i, t_fractal *julia, int check);
+void	my_mlx_pixel_put_julia(t_fractal *julia, int x, int y);
+void	draw_julia(t_fractal *julia);
+void	juliate(t_fractal *julia, int x, int y);
+int		generate_color(int i, t_vars *vars, int check);
+void	my_mlx_pixel_put(t_vars *data, int x, int y);
+void	draw_mandelbrot(t_vars *vars, int width, int height);
+int		key_hook(int keycode, t_vars *vars);
+int		render_next_frame(void *vars);
+void	mandelbrot(t_complex c, t_vars *vars);
+int		key_mouse(int button, int x, int y, t_vars *vars);
+int		ft_strncmp(char *s1, char *s2, int len);
+void	julia_call(t_fractal *julia);
+void	mandelbrot_call(t_vars *vars);
+
+#endif
