@@ -51,7 +51,7 @@ void	mandelbrot(t_complex c, t_vars *vars)
 		vars->color = generate_color(i, vars, 0);
 }
 
-void	draw_mandelbrot(t_vars *vars, int width, int height)
+void	draw_mandelbrot(t_vars *vars)
 {
 	int			x;
 	int			y;
@@ -60,15 +60,15 @@ void	draw_mandelbrot(t_vars *vars, int width, int height)
 	double		inv_height_scale;
 
 	x = 0;
-	inv_width_scale = 4.0 / (width * vars->scale);
-	inv_height_scale = 4.0 / (height * vars->scale);
-	while (x < width)
+	inv_width_scale = 4.0 / (vars->width * vars->scale);
+	inv_height_scale = 4.0 / (vars->height * vars->scale);
+	while (x < vars->width)
 	{
 		y = 0;
-		while (y < height)
+		while (y < vars->height)
 		{
-			c.real = (x - width / 2.0) * inv_width_scale + vars->center_real;
-			c.imaginary = (y - height / 2.0) * inv_height_scale
+			c.real = (x - vars->width / 2.0) * inv_width_scale + vars->center_real;
+			c.imaginary = (y - vars->height / 2.0) * inv_height_scale
 				+ vars->center_imaginary;
 			mandelbrot(c, vars);
 			my_mlx_pixel_put(vars, x, y);

@@ -30,6 +30,11 @@ typedef struct s_vars
 	double	center_real;
 	double	center_imaginary;
 	double	scale;
+	int		width;
+	int		height;
+	double	move;
+	double	move1;
+	double	move_step;
 	int		max_iter;
 	int		color;
 	int		gen_color;
@@ -64,8 +69,8 @@ typedef struct s_fractal
 	double	z_imaginary;
 	int		width;
 	int		height;
-	double	move;
 	double	move1;
+	double	move;
 	double	move_step;
 	double	move_step1;
 	int		binary;
@@ -81,7 +86,7 @@ void	draw_julia(t_fractal *julia);
 void	juliate(t_fractal *julia, int x, int y);
 int		generate_color(int i, t_vars *vars, int check);
 void	my_mlx_pixel_put(t_vars *data, int x, int y);
-void	draw_mandelbrot(t_vars *vars, int width, int height);
+void	draw_mandelbrot(t_vars *vars);
 int		key_hook(int keycode, t_vars *vars);
 int		render_next_frame(void *vars);
 void	mandelbrot(t_complex c, t_vars *vars);
@@ -89,5 +94,9 @@ int		key_mouse(int button, int x, int y, t_vars *vars);
 int		ft_strncmp(char *s1, char *s2, int len);
 void	julia_call(t_fractal *julia);
 void	mandelbrot_call(t_vars *vars);
+void	my_fractal_call(t_vars *vars);
+int		my_fract_render_next_frame(void *param);
+void	draw_my_fractal(t_vars *vars, int width, int height);
+void	my_fractal(t_complex c, t_vars *vars);
 
 #endif

@@ -43,12 +43,25 @@ int	key_hook(int keycode, t_vars *vars)
 
 int	key_mouse(int button, int x, int y, t_vars *vars)
 {
-	(void)x;
-	(void)y;
-	if (button == 5)
-		vars->scale *= 1.1;
-	else if (button == 4)
-		vars->scale *= 0.9;
+	double	zoom_factor;
+	double	normalizedx;
+	double	normalizedy;
+
+	zoom_factor = 0.01;
+	normalizedx = (2.0 * x / vars->width) - 1.0;
+	normalizedy = 1.0 - (2.0 * y / vars->height);
+	if (button == 4)
+	{
+		vars->scale *= 1.0 / (1.0 + zoom_factor);
+		vars->move1 += normalizedy * (vars->move_step / vars->scale);
+		vars->move -= normalizedx * (vars->move_step / vars->scale);
+	}
+	else if (button == 5)
+	{
+		vars->scale *= 1.0 + zoom_factor;
+		vars->move1 += normalizedy * (vars->move_step / vars->scale);
+		vars->move -= normalizedx * (vars->move_step / vars->scale);
+	}
 	return (0);
 }
 
@@ -57,7 +70,7 @@ int	render_next_frame(void *param)
 	t_vars	*vars;
 
 	vars = (t_vars *)param;
-	draw_mandelbrot(vars, 800, 800);
+	draw_mandelbrot(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	return (0);
 }

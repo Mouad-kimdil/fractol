@@ -37,5 +37,7 @@ int main(int ac, char **av)
 		julia_call(&julia);
 	else if (ft_strncmp(av[1], "mandelbrot", 10) == 0)
 		mandelbrot_call(&vars);
+	else if (ft_strncmp(av[1], "my_fractal", 11) == 0)
+		my_fractal_call(&vars);
 	return (0);
 }
