@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:38:51 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:35:59 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/19 04:44:51 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int	mouse_sen_julia(int x, int y, t_fractal *julia)
 	normalizedy = (y - half_window_size) / (double)half_window_size;
 	if (julia->binary == 1)
 	{
-			julia->c_imaginary += julia->move_step / julia->scale * normalizedy;
-			julia->c_real += julia->move_step / julia->scale * normalizedx;
+		julia->c_imaginary += julia->move_step / julia->scale * normalizedy;
+		julia->c_real += julia->move_step / julia->scale * normalizedx;
 	}
 	else if (julia->binary == 0)
 		;

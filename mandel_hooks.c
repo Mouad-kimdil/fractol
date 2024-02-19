@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:23:33 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:22:56 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/19 04:44:42 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-int key_mouse(int button, int x, int y, t_vars *vars)
+int	key_mouse(int button, int x, int y, t_vars *vars)
 {
-	double zoom_factor;
-	double normalizedx;
-	double normalizedy;
+	double	zoom_factor;
+	double	normalizedx;
+	double	normalizedy;
 
 	zoom_factor = 0.01 * vars->scale;
 	normalizedx = (2.0 * x / WIDTH) - 1.0;
@@ -68,7 +68,6 @@ int key_mouse(int button, int x, int y, t_vars *vars)
 	}
 	return (0);
 }
-
 
 int	render_next_frame(void *param)
 {
