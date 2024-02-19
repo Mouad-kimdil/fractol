@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   julia_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:38:51 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/01/30 23:47:44 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/19 04:35:59 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	close_window(void *param)
+{
+	t_fractal	*julia;
+
+	julia = (t_fractal *)param;
+	mlx_destroy_window(julia->mlx, julia->win);
+	exit(0);
+	return (0);
+}
 
 int	key_hook_julia(int keycode, t_fractal *julia)
 {
@@ -30,7 +40,7 @@ int	key_hook_julia(int keycode, t_fractal *julia)
 		julia->max_iter += 20;
 	else if (keycode == 8 && julia->max_iter > 20)
 		julia->max_iter -= 20;
-	else if (keycode == 12)
+	else if (keycode == 53)
 	{
 		mlx_destroy_window(julia->mlx, julia->win);
 		exit(0);
@@ -45,8 +55,8 @@ int	key_mouse_julia(int button, int x, int y, t_fractal *julia)
 	double	normalizedy;
 
 	zoom_factor = 0.01;
-	normalizedx = (2.0 * x / julia->width) - 1.0;
-	normalizedy = 1.0 - (2.0 * y / julia->height);
+	normalizedx = (2.0 * x / WIDTH) - 1.0;
+	normalizedy = 1.0 - (2.0 * y / HEIGHT);
 	if (button == 4)
 	{
 		julia->scale *= 1.0 / (1.0 + zoom_factor);
@@ -73,26 +83,19 @@ int	mouse_sen_julia(int x, int y, t_fractal *julia)
 	double	normalizedx;
 	double	normalizedy;
 
-	windowsize = 800;
+	windowsize = WIDTH;
 	half_window_size = windowsize / 2;
 	normalizedx = (x - half_window_size) / (double)half_window_size;
+	windowsize = HEIGHT;
+	half_window_size = windowsize / 2;
 	normalizedy = (y - half_window_size) / (double)half_window_size;
 	if (julia->binary == 1)
 	{
-		if (x > 800 || x < 0 || y > 800 || y < 0)
-		{
-			julia->c_imaginary = 0.4;
-			julia->c_real = 0.4;
-		}
-		else
-		{
 			julia->c_imaginary += julia->move_step / julia->scale * normalizedy;
 			julia->c_real += julia->move_step / julia->scale * normalizedx;
-		}
 	}
 	else if (julia->binary == 0)
-	{
-	}
+		;
 	return (0);
 }
 

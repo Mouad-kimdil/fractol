@@ -33,8 +33,8 @@ void	draw_my_fractal(t_vars *vars, int width, int height)
 	double		inv_height_scale;
 
 	x = 0;
-	inv_width_scale = 4.0 / (width * vars->scale);
-	inv_height_scale = 4.0 / (height * vars->scale);
+	inv_width_scale = 4.0 / (width * vars->scale + vars->move);
+	inv_height_scale = 4.0 / (height * vars->scale + vars->move1);
 	while (x < width)
 	{
 		y = 0;
@@ -56,7 +56,7 @@ int	my_fract_render_next_frame(void *param)
 	t_vars	*vars;
 
 	vars = (t_vars *)param;
-	draw_my_fractal(vars, 800, 800);
+	draw_my_fractal(vars, WIDTH, HEIGHT);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	return (0);
 }

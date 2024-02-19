@@ -8,7 +8,7 @@ OBJS = ${SRC:.c=.o}
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${FLAGS} ${OBJS} -L /usr/X11R6/lib -lmlx -lXext -lX11 -lm -o ${NAME}
+	${CC} ${FLAGS} ${OBJS} -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 
 %.o: %.c ${HEADER}
 	${CC} ${FLAGS} -c $<

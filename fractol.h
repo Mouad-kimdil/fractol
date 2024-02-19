@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:21:39 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/01/29 23:22:16 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/19 04:36:49 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ typedef struct s_vars
 	double	center_real;
 	double	center_imaginary;
 	double	scale;
-	int		width;
-	int		height;
 	double	move;
 	double	move1;
 	double	move_step;
@@ -67,8 +65,6 @@ typedef struct s_fractal
 	double	c_imaginary;
 	double	z_real;
 	double	z_imaginary;
-	int		width;
-	int		height;
 	double	move1;
 	double	move;
 	double	move_step;
@@ -76,6 +72,14 @@ typedef struct s_fractal
 	int		binary;
 }	t_fractal;
 
+# ifndef WIDTH
+#  define WIDTH 800
+# endif
+# ifndef HEIGHT
+#  define HEIGHT 800
+# endif
+
+int		close_window(void *param);
 int		key_hook_julia(int keycode, t_fractal *julia);
 int		key_mouse_julia(int button, int x, int y, t_fractal *julia);
 int		mouse_sen_julia(int x, int y, t_fractal *julia);

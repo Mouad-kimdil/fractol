@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_helpers.c                                  :+:      :+:    :+:   */
+/*   mandel_helpers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:16:13 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/01/29 23:20:42 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/19 04:07:49 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ void	draw_mandelbrot(t_vars *vars)
 	double		inv_height_scale;
 
 	x = 0;
-	inv_width_scale = 4.0 / (vars->width * vars->scale);
-	inv_height_scale = 4.0 / (vars->height * vars->scale);
-	while (x < vars->width)
+	inv_width_scale = 4.0 / (WIDTH * vars->scale + vars->move);
+	inv_height_scale = 4.0 / (HEIGHT * vars->scale + vars->move1);
+	while (x < WIDTH)
 	{
 		y = 0;
-		while (y < vars->height)
+		while (y < HEIGHT)
 		{
-			c.real = (x - vars->width / 2.0) * inv_width_scale + vars->center_real;
-			c.imaginary = (y - vars->height / 2.0) * inv_height_scale
+			c.real = (x - WIDTH / 2.0) * inv_width_scale + vars->center_real;
+			c.imaginary = (y - HEIGHT / 2.0) * inv_height_scale
 				+ vars->center_imaginary;
 			mandelbrot(c, vars);
 			my_mlx_pixel_put(vars, x, y);

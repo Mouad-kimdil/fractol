@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia_helpers.c                                    :+:      :+:    :+:   */
+/*   julia_helpers_julia.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 00:37:31 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/01/30 23:27:33 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/19 04:33:34 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	juliate(t_fractal *julia, int x, int y)
 	double		tmp;
 
 	i = 0;
-	julia->z_real = (double)x / (double)julia->width
+	julia->z_real = (double)x / (double)WIDTH
 		* 4.1 / julia->scale - julia->move;
-	julia->z_imaginary = (double)y / (double)julia->height
+	julia->z_imaginary = (double)y / (double)HEIGHT
 		* 4.1 / julia->scale - julia->move1;
 	while (i < julia->max_iter)
 	{
@@ -62,10 +62,10 @@ void	draw_julia(t_fractal *julia)
 	int	y;
 
 	x = 0;
-	while (x < julia->width)
+	while (x < WIDTH)
 	{
 		y = 0;
-		while (y < julia->height)
+		while (y < HEIGHT)
 		{
 			juliate(julia, x, y);
 			my_mlx_pixel_put_julia(julia, x, y);

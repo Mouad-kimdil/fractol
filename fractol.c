@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:18:21 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/01/29 20:18:48 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/19 04:24:34 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ int main(int ac, char **av)
 
     if (ac != 2)
         return (0);
+	if (WIDTH <= 0 || WIDTH >= 1500 || HEIGHT <= 0 || HEIGHT >= 1500)
+		return (0);
     if (ft_strncmp(av[1], "julia", 6) == 0)
 		julia_call(&julia);
-	else if (ft_strncmp(av[1], "mandelbrot", 10) == 0)
+	else if (ft_strncmp(av[1], "mandelbrot", 11) == 0)
 		mandelbrot_call(&vars);
-	else if (ft_strncmp(av[1], "my_fractal", 11) == 0)
+	else if (ft_strncmp(av[1], "burning_ship", 13) == 0)
 		my_fractal_call(&vars);
 	return (0);
 }
