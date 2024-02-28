@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 04:44:36 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:45:20 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/28 00:35:26 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	my_fractal_call(t_vars *vars)
 	vars->move1 = 2.0;
 	vars->move_step = 0.09;
 	mlx_hook(vars->win, 17, 0, close_window, vars);
-	mlx_hook(vars->win, 2, 0, key_hook, vars);
-	mlx_hook(vars->win, 4, 0, key_mouse, vars);
+	mlx_hook(vars->win, 2, 0, burn_key_hook, vars);
+	mlx_hook(vars->win, 4, 0, burn_key_mouse, vars);
 	mlx_loop_hook(vars->mlx, my_fract_render_next_frame, vars);
 	mlx_loop(vars->mlx);
 }

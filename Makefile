@@ -1,4 +1,4 @@
-SRC = fractol.c mandel_helpers.c  mandel_hooks.c  julia_hooks.c  julia.c  julia_helpers_julia.c  mandelbrot.c my_fractal.c my_fract_helpers.c
+SRC = fractol.c mandel_helpers.c  mandel_hooks.c  julia_hooks.c  julia.c  julia_helpers_julia.c  mandelbrot.c my_fractal.c my_fract_helpers.c my_fractal_hooks.c
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 NAME = fractol

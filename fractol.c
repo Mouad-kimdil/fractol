@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:18:21 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:45:01 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/21 21:04:37 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	if (WIDTH <= 0 || WIDTH >= 1500 || HEIGHT <= 0 || HEIGHT >= 1500)
+	if (WIDTH <= 0 || WIDTH > 2000 || HEIGHT <= 0 || HEIGHT > 2000)
 		return (0);
 	if (ft_strncmp(av[1], "julia", 6) == 0)
 		julia_call(&julia);

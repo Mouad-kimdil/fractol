@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:21:39 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:44:59 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/28 00:42:39 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,8 @@ void	my_fractal_call(t_vars *vars);
 int		my_fract_render_next_frame(void *param);
 void	draw_my_fractal(t_vars *vars, int width, int height);
 void	my_fractal(t_complex c, t_vars *vars);
+int		burn_key_hook(int keycode, t_vars *vars);
+int		burn_key_mouse(int button, int x, int y, t_vars *vars);
+int		burn_generate_color(int i, t_vars *vars, int is_max_iter);
 
 #endif

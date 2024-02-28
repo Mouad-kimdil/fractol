@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:38:51 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:44:51 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/28 00:30:25 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	key_hook_julia(int keycode, t_fractal *julia)
 	else if (keycode == 32 && julia->gen_color > 10)
 		julia->gen_color -= 10;
 	else if (keycode == 7)
-		julia->max_iter += 20;
+		julia->max_iter += 5;
 	else if (keycode == 8 && julia->max_iter > 20)
-		julia->max_iter -= 20;
+		julia->max_iter -= 5;
 	else if (keycode == 53)
 	{
 		mlx_destroy_window(julia->mlx, julia->win);
@@ -54,7 +54,7 @@ int	key_mouse_julia(int button, int x, int y, t_fractal *julia)
 	double	normalizedx;
 	double	normalizedy;
 
-	zoom_factor = 0.01;
+	zoom_factor = 0.02;
 	normalizedx = (2.0 * x / WIDTH) - 1.0;
 	normalizedy = 1.0 - (2.0 * y / HEIGHT);
 	if (button == 4)
@@ -89,7 +89,7 @@ int	mouse_sen_julia(int x, int y, t_fractal *julia)
 	windowsize = HEIGHT;
 	half_window_size = windowsize / 2;
 	normalizedy = (y - half_window_size) / (double)half_window_size;
-	if (julia->binary == 1)
+	if (julia->binary == 1 && (x < 800 && x > 0 && y > 0 && y < 800))
 	{
 		julia->c_imaginary += julia->move_step / julia->scale * normalizedy;
 		julia->c_real += julia->move_step / julia->scale * normalizedx;

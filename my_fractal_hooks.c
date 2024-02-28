@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandel_hooks.c                                     :+:      :+:    :+:   */
+/*   my_fractal_hooks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 23:23:33 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/28 02:02:55 by mkimdil          ###   ########.fr       */
+/*   Created: 2024/02/28 00:34:04 by mkimdil           #+#    #+#             */
+/*   Updated: 2024/02/28 00:36:11 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	key_hook(int keycode, t_vars *vars)
+int	burn_key_hook(int keycode, t_vars *vars)
 {
 	double	move_step;
 
@@ -41,13 +41,13 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-int	key_mouse(int button, int x, int y, t_vars *vars)
+int	burn_key_mouse(int button, int x, int y, t_vars *vars)
 {
 	double	zoom_factor;
 	double	normalizedx;
 	double	normalizedy;
 
-	zoom_factor = 0.05;
+	zoom_factor = 0.03;
 	normalizedx = (2.0 * x / WIDTH) - 1.0;
 	normalizedy = 1.0 - (2.0 * y / HEIGHT);
 	if (button == 4)
@@ -66,15 +66,5 @@ int	key_mouse(int button, int x, int y, t_vars *vars)
 		vars->center_real += normalizedx * (vars->move_step / vars->scale);
 		vars->center_imaginary -= normalizedy * (vars->move_step / vars->scale);
 	}
-	return (0);
-}
-
-int	render_next_frame(void *param)
-{
-	t_vars	*vars;
-
-	vars = (t_vars *)param;
-	draw_mandelbrot(vars);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	return (0);
 }

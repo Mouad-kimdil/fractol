@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:16:13 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:44:44 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/19 17:26:23 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	generate_color(int i, t_vars *vars, int check)
 {
 	if (check == 1)
 		return (0);
-	return (((i * vars->max_iter) << 4) * vars->gen_color);
+	return (((i * vars->max_iter) << 3) * vars->gen_color);
 }
 
 void	my_mlx_pixel_put(t_vars *data, int x, int y)

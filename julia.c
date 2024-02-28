@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:31:47 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:44:48 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/23 22:59:55 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	julia_call(t_fractal *julia)
 	julia->move = 2.0;
 	julia->move1 = 2.0;
 	julia->move_step = 0.09;
-	julia->move_step1 = -0.1;
-	julia->c_imaginary = 0.4;
-	julia->c_real = 0.4;
+	julia->move_step1 = -0.8;
+	julia->c_imaginary = 0.156;
+	julia->c_real = -0.835;
 	mlx_hook(julia->win, 17, 0, close_window, julia);
 	mlx_hook(julia->win, 4, 0, key_mouse_julia, julia);
 	mlx_hook(julia->win, 6, 0, mouse_sen_julia, julia);

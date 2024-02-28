@@ -6,11 +6,27 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 04:44:31 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:45:13 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/28 00:48:27 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	burn_generate_color(int i, t_vars *vars, int is_max_iter)
+{
+	double	t;
+	int		r;
+	int		g;
+	int		b;
+
+	if (is_max_iter)
+		return (0);
+	t = (double)i / vars->max_iter;
+	r = (int)(9 * (1 - t) * t * t * t * 255);
+	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	return ((r << 16) | (g << 8) | b);
+}
 
 void	my_fractal(t_complex c, t_vars *vars)
 {
@@ -23,17 +39,18 @@ void	my_fractal(t_complex c, t_vars *vars)
 	i = 0;
 	while (i < vars->max_iter)
 	{
-		temp = z.real * z.real - z.imaginary * z.imaginary + c.real;
-		z.imaginary = -2 * z.real * z.imaginary + c.imaginary;
+		temp = fabs(z.real) * fabs(z.real) - fabs(z.imaginary)
+			* fabs(z.imaginary) + c.real;
+		z.imaginary = 2 * fabs(z.real) * fabs(z.imaginary) + c.imaginary;
 		z.real = temp;
 		if (z.real * z.real + z.imaginary * z.imaginary > 4)
 			break ;
 		i++;
 	}
 	if (i == vars->max_iter)
-		vars->color = generate_color(i, vars, 1);
+		vars->color = burn_generate_color(i, vars, 1);
 	else
-		vars->color = generate_color(i, vars, 0);
+		vars->color = burn_generate_color(i, vars, 0);
 }
 
 void	draw_my_fractal(t_vars *vars, int width, int height)

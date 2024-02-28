@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 00:37:31 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:44:56 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/28 03:17:28 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,21 @@
 
 int	generate_color_julia(int i, t_fractal *julia, int check)
 {
+	double	t;
+	int		r;
+	int		b;
+	int		g;
+
 	if (check == 1)
 		return (0);
-	return (((i * julia->max_iter) << 4) * julia->gen_color);
+	t = (double)i / (double)julia->max_iter;
+	r = (int)(9 * (1 - t) * t * t * t * 255)
+		*log(log(julia->gen_color));
+	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255)
+		*log(log(julia->gen_color));
+	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255)
+		*log(log(julia->gen_color));
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	my_mlx_pixel_put_julia(t_fractal *julia, int x, int y)

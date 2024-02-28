@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:25:06 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/19 04:40:05 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/02/22 03:56:04 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	mandelbrot_call(t_vars *vars)
 	vars->center_real = 0.0;
 	vars->center_imaginary = 0.0;
 	vars->scale = 1.0;
-	vars->gen_color = 885;
-	vars->max_iter = 60;
+	vars->gen_color = 5;
+	vars->max_iter = 10;
 	vars->move = 2.0;
 	vars->move1 = 2.0;
 	vars->move_step = 0.09;
