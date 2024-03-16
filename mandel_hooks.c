@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:23:33 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/28 02:02:55 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 14:55:02 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ int	key_hook(int keycode, t_vars *vars)
 	double	move_step;
 
 	move_step = 0.3;
-	if (keycode == 13)
+	if (keycode == UP)
 		vars->center_imaginary -= move_step / vars->scale;
-	else if (keycode == 1)
+	else if (keycode == DOWN)
 		vars->center_imaginary += move_step / vars->scale;
-	else if (keycode == 0)
+	else if (keycode == LEFT)
 		vars->center_real -= move_step / vars->scale;
-	else if (keycode == 2)
+	else if (keycode == RIGHT)
 		vars->center_real += move_step / vars->scale;
-	else if (keycode == 34)
+	else if (keycode == COLOR_UP)
 		vars->gen_color += 10;
-	else if (keycode == 32 && vars->gen_color > 10)
+	else if (keycode == COLOR_DOWN && vars->gen_color > 10)
 		vars->gen_color -= 10;
-	else if (keycode == 7)
+	else if (keycode == ITER_UP)
 		vars->max_iter += 5;
-	else if (keycode == 8 && vars->max_iter > 20)
+	else if (keycode == ITER_DOWN && vars->max_iter > 20)
 		vars->max_iter -= 5;
-	else if (keycode == 53)
+	else if (keycode == ESC)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
@@ -50,7 +50,7 @@ int	key_mouse(int button, int x, int y, t_vars *vars)
 	zoom_factor = 0.05;
 	normalizedx = (2.0 * x / WIDTH) - 1.0;
 	normalizedy = 1.0 - (2.0 * y / HEIGHT);
-	if (button == 4)
+	if (button == ZOOM_OUT)
 	{
 		vars->scale *= 1.0 / (1.0 + zoom_factor);
 		vars->move1 += normalizedy * (vars->move_step / vars->scale);
@@ -58,7 +58,7 @@ int	key_mouse(int button, int x, int y, t_vars *vars)
 		vars->center_real += normalizedx * (vars->move_step / vars->scale);
 		vars->center_imaginary -= normalizedy * (vars->move_step / vars->scale);
 	}
-	else if (button == 5)
+	else if (button == ZOOM_IN)
 	{
 		vars->scale *= 1.0 + zoom_factor;
 		vars->move1 += normalizedy * (vars->move_step / vars->scale);

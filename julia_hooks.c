@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:38:51 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/28 00:30:25 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 15:05:17 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,29 @@ int	close_window(void *param)
 
 	julia = (t_fractal *)param;
 	mlx_destroy_window(julia->mlx, julia->win);
-	exit(0);
+	my_exit("window closed");
 	return (0);
 }
 
 int	key_hook_julia(int keycode, t_fractal *julia)
 {
-	if (keycode == 124)
+	if (keycode == RIGHT)
 		julia->move -= julia->move_step;
-	else if (keycode == 123)
+	else if (keycode == LEFT)
 		julia->move += julia->move_step;
-	else if (keycode == 126)
+	else if (keycode == UP)
 		julia->move1 -= julia->move_step1;
-	else if (keycode == 125)
+	else if (keycode == DOWN)
 		julia->move1 += julia->move_step1;
-	if (keycode == 34)
+	if (keycode == COLOR_UP)
 		julia->gen_color += 10;
-	else if (keycode == 32 && julia->gen_color > 10)
+	else if (keycode == COLOR_DOWN && julia->gen_color > 10)
 		julia->gen_color -= 10;
-	else if (keycode == 7)
+	else if (keycode == ITER_UP)
 		julia->max_iter += 5;
-	else if (keycode == 8 && julia->max_iter > 20)
+	else if (keycode == ITER_DOWN && julia->max_iter > 20)
 		julia->max_iter -= 5;
-	else if (keycode == 53)
+	else if (keycode == ESC)
 	{
 		mlx_destroy_window(julia->mlx, julia->win);
 		exit(0);
@@ -54,16 +54,16 @@ int	key_mouse_julia(int button, int x, int y, t_fractal *julia)
 	double	normalizedx;
 	double	normalizedy;
 
-	zoom_factor = 0.02;
+	zoom_factor = 0.03;
 	normalizedx = (2.0 * x / WIDTH) - 1.0;
 	normalizedy = 1.0 - (2.0 * y / HEIGHT);
-	if (button == 4)
+	if (button == ZOOM_OUT)
 	{
 		julia->scale *= 1.0 / (1.0 + zoom_factor);
 		julia->move1 += normalizedy * (julia->move_step / julia->scale);
 		julia->move -= normalizedx * (julia->move_step / julia->scale);
 	}
-	else if (button == 5)
+	else if (button == ZOOM_IN)
 	{
 		julia->scale *= 1.0 + zoom_factor;
 		julia->move1 += normalizedy * (julia->move_step / julia->scale);

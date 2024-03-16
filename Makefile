@@ -1,6 +1,6 @@
-SRC = fractol.c mandel_helpers.c  mandel_hooks.c  julia_hooks.c  julia.c  julia_helpers_julia.c  mandelbrot.c my_fractal.c my_fract_helpers.c my_fractal_hooks.c
+SRC = fractol.c mandel_helpers.c  mandel_hooks.c  julia_hooks.c  julia.c  julia_helpers_julia.c  mandelbrot.c my_fractal.c my_fract_helpers.c my_fractal_hooks.c err_exit.c
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -O3
 NAME = fractol
 HEADER = fractol.h
 OBJS = ${SRC:.c=.o}
