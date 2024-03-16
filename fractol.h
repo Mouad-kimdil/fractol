@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:21:39 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 21:57:53 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 22:35:39 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define COLOR_UP 34
 # define COLOR_DOWN 32
 # define JULIA 1
+# define RESET 15
+# define WRONG_RESOLUTION "\033[0;31mWidth must be bteween 1 and 2560 \
+and height must be between 1 and 1440\033[0m"
 # define ARGS_MSG "\033[0;34m Usage: ./fractol [julia] or [mandelbrot] or \
 [burning_ship]\033[0m"
 # define CLOSE "\033[0;32mWindow closed\033[0m"
@@ -93,6 +96,8 @@ typedef struct s_fractal
 	double	move_step;
 	double	move_step1;
 	int		binary;
+	double	temp_i;
+	double	temp_r;
 }	t_fractal;
 
 int		close_window(void *param);

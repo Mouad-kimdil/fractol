@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:31:47 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 21:36:56 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 22:38:55 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ void	initialize_julia(t_fractal *julia)
 	julia->move1 = 2.0;
 	julia->move_step = 0.09;
 	julia->move_step1 = -0.09;
-	julia->c_real = 0;
-	julia->c_imaginary = 0.8;
+	julia->c_real = -0.4;
+	julia->c_imaginary = -0.6;
+	julia->temp_r = julia->c_real;
+	julia->temp_i = julia->c_imaginary;
 }
 
 void	julia_call(t_fractal *julia)
