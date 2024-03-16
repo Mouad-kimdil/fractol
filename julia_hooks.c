@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:38:51 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 21:35:04 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 22:41:45 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int	key_hook_julia(int keycode, t_fractal *julia)
 		julia->max_iter += 5;
 	else if (keycode == ITER_DOWN && julia->max_iter > 20)
 		julia->max_iter -= 5;
+	else if (keycode == RESET)
+		((julia->c_real = julia->temp_r)
+				&& (julia->c_imaginary = julia->temp_i));
 	else if (keycode == ESC)
 	{
 		mlx_destroy_window(julia->mlx, julia->win);

@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:18:21 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 21:19:26 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 22:23:32 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (ft_putendl_fd(ARGS_MSG, 1), 0);
-	if (WIDTH <= 0 || WIDTH > 2000 || HEIGHT <= 0 || HEIGHT > 2000)
-		return (0);
+	if (WIDTH <= 0 || WIDTH > 2560 || HEIGHT <= 0 || HEIGHT > 1440)
+		my_exit(WRONG_RESOLUTION);
 	if (ft_strncmp(av[1], "julia", 6) == 0)
 		julia_call(&julia);
 	else if (ft_strncmp(av[1], "mandelbrot", 11) == 0)
