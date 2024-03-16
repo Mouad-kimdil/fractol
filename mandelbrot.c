@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:25:06 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 14:49:11 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 21:39:22 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	initialize_mandelbrot(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
-		my_exit("mlx init failed");
+		my_exit(INIT_FAILED);
 	vars->win = mlx_new_window(vars->mlx, WIDTH, HEIGHT, "Mandelbrot");
 	if (!vars->win)
-		my_exit("mlx new window failed");
+		my_exit(NEW_WIN_FAILED);
 	vars->img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	if (!vars->img)
-		my_exit("mlx new image failed");
+		my_exit(NEW_IMG_FAILED);
 	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_per_pixel,
 			&vars->line_length, &vars->endian);
 	if (!vars->addr)
-		my_exit("mlx get data addr failed");
+		my_exit(GET_DATA_ADDR_FAILED);
 	vars->center_real = 0.0;
 	vars->center_imaginary = 0.0;
 	vars->scale = 1.0;

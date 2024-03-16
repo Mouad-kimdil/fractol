@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:31:47 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 15:00:35 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 21:36:56 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	initialize_julia(t_fractal *julia)
 {
 	julia->mlx = mlx_init();
 	if (!julia->mlx)
-		my_exit("mlx init failed");
+		my_exit(INIT_FAILED);
 	julia->win = mlx_new_window(julia->mlx, WIDTH, HEIGHT, "julia");
 	if (!julia->win)
-		my_exit("mlx new window failed");
+		my_exit(NEW_WIN_FAILED);
 	julia->img = mlx_new_image(julia->mlx, WIDTH, HEIGHT);
 	if (!julia->img)
-		my_exit("mlx new image failed");
+		my_exit(NEW_IMG_FAILED);
 	julia->addr = mlx_get_data_addr(julia->img, &julia->bits_per_pixel,
 			&julia->line_length, &julia->endian);
 	if (!julia->addr)
-		my_exit("mlx get data addr failed");
+		my_exit(GET_DATA_ADDR_FAILED);
 	julia->scale = 1.0;
 	julia->gen_color = 5;
 	julia->max_iter = 20;

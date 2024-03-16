@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:21:39 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 14:52:07 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 21:57:53 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <math.h>
 # include "mlx.h"
 
+# define WIDTH 800
+# define HEIGHT 800
 # define ESC 53
 # define UP 13
 # define DOWN 1
@@ -31,6 +33,13 @@
 # define COLOR_UP 34
 # define COLOR_DOWN 32
 # define JULIA 1
+# define ARGS_MSG "\033[0;34m Usage: ./fractol [julia] or [mandelbrot] or \
+[burning_ship]\033[0m"
+# define CLOSE "\033[0;32mWindow closed\033[0m"
+# define INIT_FAILED "\033[0;31mmlx init failed\033[0m"
+# define NEW_WIN_FAILED "\033[0;31mmlx new window failed\033[0m"
+# define NEW_IMG_FAILED "\033[0;31mmlx new image failed\033[0m"
+# define GET_DATA_ADDR_FAILED "\033[0;31mmlx get data addr failed\033[0m"
 
 typedef struct s_vars
 {
@@ -85,13 +94,6 @@ typedef struct s_fractal
 	double	move_step1;
 	int		binary;
 }	t_fractal;
-
-# ifndef WIDTH
-#  define WIDTH 800
-# endif
-# ifndef HEIGHT
-#  define HEIGHT 800
-# endif
 
 int		close_window(void *param);
 int		key_hook_julia(int keycode, t_fractal *julia);
