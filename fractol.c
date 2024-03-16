@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:18:21 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 14:41:29 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 21:19:26 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	main(int ac, char **av)
 	t_vars		vars;
 
 	if (ac != 2)
-		return (ft_putendl_fd("\033[0;34m Usage: ./fractol [julia] or [mandelbrot] \
-		or [burning_ship]\033[0m", 1), 0);
+		return (ft_putendl_fd(ARGS_MSG, 1), 0);
 	if (WIDTH <= 0 || WIDTH > 2000 || HEIGHT <= 0 || HEIGHT > 2000)
 		return (0);
 	if (ft_strncmp(av[1], "julia", 6) == 0)

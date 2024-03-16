@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 21:38:51 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/16 15:05:17 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 21:35:04 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	close_window(void *param)
 
 	julia = (t_fractal *)param;
 	mlx_destroy_window(julia->mlx, julia->win);
-	my_exit("window closed");
+	my_exit(CLOSE);
 	return (0);
 }
 
@@ -43,7 +43,7 @@ int	key_hook_julia(int keycode, t_fractal *julia)
 	else if (keycode == ESC)
 	{
 		mlx_destroy_window(julia->mlx, julia->win);
-		exit(0);
+		my_exit(CLOSE);
 	}
 	return (0);
 }

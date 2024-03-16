@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 04:44:31 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/07 12:18:24 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 16:37:50 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	my_fract_render_next_frame(void *param)
 
 	vars = (t_vars *)param;
 	draw_my_fractal(vars, WIDTH, HEIGHT);
+	mlx_clear_window(vars->mlx, vars->win);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	return (0);
 }
