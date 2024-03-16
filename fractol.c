@@ -6,25 +6,11 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:18:21 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/21 21:04:37 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 14:41:29 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int	ft_strncmp(char *s1, char *s2, int len)
-{
-	int	i;
-
-	i = 0;
-	while ((s1[i] || s2[i]) && i < len)
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char )s1[i] - (unsigned char )s2[i]);
-		i++;
-	}
-	return (0);
-}
 
 int	main(int ac, char **av)
 {
@@ -32,7 +18,8 @@ int	main(int ac, char **av)
 	t_vars		vars;
 
 	if (ac != 2)
-		return (0);
+		return (ft_putendl_fd("\033[0;34m Usage: ./fractol [julia] or [mandelbrot] \
+		or [burning_ship]\033[0m", 1), 0);
 	if (WIDTH <= 0 || WIDTH > 2000 || HEIGHT <= 0 || HEIGHT > 2000)
 		return (0);
 	if (ft_strncmp(av[1], "julia", 6) == 0)

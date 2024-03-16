@@ -6,7 +6,7 @@
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:21:39 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/02/28 00:42:39 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/03/16 14:52:07 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,22 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <math.h>
 # include "mlx.h"
+
+# define ESC 53
+# define UP 13
+# define DOWN 1
+# define LEFT 0
+# define RIGHT 2
+# define ZOOM_IN 5
+# define ZOOM_OUT 4
+# define ITER_UP 7
+# define ITER_DOWN 8
+# define COLOR_UP 34
+# define COLOR_DOWN 32
+# define JULIA 1
 
 typedef struct s_vars
 {
@@ -105,5 +119,11 @@ void	my_fractal(t_complex c, t_vars *vars);
 int		burn_key_hook(int keycode, t_vars *vars);
 int		burn_key_mouse(int button, int x, int y, t_vars *vars);
 int		burn_generate_color(int i, t_vars *vars, int is_max_iter);
+void	ft_putendl_fd(char *s, int fd);
+int		ft_strlen(char *str);
+void	initialize_julia(t_fractal *julia);
+void	my_exit(char *str);
+void	initialize_mandelbrot(t_vars *vars);
+void	initialize_burning(t_vars *vars);
 
 #endif
