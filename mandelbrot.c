@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mes-salh <mes-salh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:25:06 by mkimdil           #+#    #+#             */
-/*   Updated: 2024/03/17 15:52:16 by mkimdil          ###   ########.fr       */
+/*   Updated: 2024/08/01 05:40:26 by mes-salh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	initialize_mandelbrot(t_vars *vars)
 	vars->center_imaginary = 0.0;
 	vars->scale = 1.0;
 	vars->gen_color = 5;
-	vars->max_iter = 10;
+	vars->max_iter = 100;
 	vars->move = 2.0;
 	vars->move1 = 2.0;
 	vars->move_step = 0.09;
