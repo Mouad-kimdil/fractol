@@ -1,0 +1,17 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/mes-salh/Desktop/fractolkm'
+cc -Wall -Wextra -Werror -O3 -c fractol.c
+ 
+cc -Wall -Wextra -Werror -O3 -c mandel_helpers.c
+cc -Wall -Wextra -Werror -O3 -c mandel_hooks.c
+cc -Wall -Wextra -Werror -O3 -c julia_hooks.c
+cc -Wall -Wextra -Werror -O3 -c julia.c
+cc -Wall -Wextra -Werror -O3 -c julia_helpers_julia.c
+cc -Wall -Wextra -Werror -O3 -c mandelbrot.c
+cc -Wall -Wextra -Werror -O3 -c my_fractal.c
+cc -Wall -Wextra -Werror -O3 -c my_fract_helpers.c
+cc -Wall -Wextra -Werror -O3 -c my_fractal_hooks.c
+cc -Wall -Wextra -Werror -O3 -c err_exit.c
+cc -Wall -Wextra -Werror -O3 fractol.o mandel_helpers.o mandel_hooks.o julia_hooks.o julia.o julia_helpers_julia.o mandelbrot.o my_fractal.o my_fract_helpers.o my_fractal_hooks.o err_exit.o -lmlx -framework OpenGL -framework AppKit -o fractol
+make: Leaving directory `/Users/mes-salh/Desktop/fractolkm'
+ 
